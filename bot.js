@@ -16,7 +16,7 @@ client.on('message', message => {
 });
 
 client.on('ready', () => {
-    client.user.setGame(`5sBot`,"http://twitch.tv/y04zgamer")
+    client.user.setGame(`[5s]Server`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
