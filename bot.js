@@ -20,7 +20,7 @@ client.on('ready',async () => {
   try {
     const config = {
       name: "5sRainBow", // اسم الرتبة
-      guildid: "359674601392832512", // اي دي السيرفر
+      guildid: "483767811676831745", // اي دي السيرفر
       sec: 1 // عدد الثواني
     };
     let guild = client.guilds.get(config.guildid);
