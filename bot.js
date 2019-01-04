@@ -10,8 +10,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === 'zg') {
-        message.reply('pong');
+    if (message.content === '@!                       Alaseri#0065 ') {
+        message.reply('Zzzzzzzzzz');
       }
 });
 
@@ -40,7 +40,7 @@ client.on('ready',async () => {
 });
 
 client.on('ready', () => {
-    client.user.setGame(`[5s]Server`,"http://twitch.tv/y04zgamer")
+    client.user.setGame(`5sServer`,"http://twitch.tv/y04zgamer")
     client.user.setStatus("dnd")
   console.log(`Logged in as ${client.user.tag}!`);
 });
