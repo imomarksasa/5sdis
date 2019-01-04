@@ -10,8 +10,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if (message.content === '@!                       Alaseri#0065 ') {
-        message.reply('Zzzzzzzzzz');
+    if (message.content === 'اخي') {
+        message.reply('مرحبا');
       }
 });
 
