@@ -15,6 +15,35 @@ client.on('message', message => {
       }
 });
 
+client.on('message', message => {
+let pointss = JSON.parse(fs.readFileSync("points.json", "utf8"))
+if(message.content.startsWith(prefix + 'points')) {
+    let mention = message.mentions.users.first()
+    let args = message.content.split(' ').slice(2).join(' ');
+    let points = 0;
+    if (isNaN(args)) {
+        message.channel.send(`**type a number**`);
+    if(mention) {
+        if (!pointss[men.id]) pointss[men.id] = {
+            users: s
+      }
+      }
+      pointss[getvalueof.id].points += `${args}`; 
+
+    }}
+     fs.writeFile('./points.json', JSON.stringify(points), (err) => {
+
+    if(message.content.startsWith(prefix + 'pointlist')) {
+        let users = member.guild
+        let embed = new Discord.RichEmbed()
+        .addField('Users:', `${users}`)
+        .addField('Points:', `${points}`)
+message.channel.send(embed)
+
+    }
+})
+})
+
 client.on('ready',async () => {
   console.log(client.user.username);
   try {
