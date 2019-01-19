@@ -504,7 +504,7 @@ LOka.on('guildMemberAdd', member => {
  
  
 
-RAW Paste Data
+
 
 console.log('By KBOOOOOOOOSH-YT');
 LOka.on('ready', () => {
