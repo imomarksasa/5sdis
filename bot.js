@@ -20,3 +20,6 @@ client.on('ready', () => {
 var x = client.channels.get("528334067419054090");
 if (x) x.join();
 });
+
+
+client.login(process.env.BOT_TOKEN);
