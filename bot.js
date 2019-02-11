@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
- const prefix = "+";
+ const prefix = "*";
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -11,54 +11,29 @@ client.on('message', message => {
       }
 });
 
-client.on('ready',  () => {
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'); 
-  console.log('by BadGuY');
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-  console.log(`Logged in as  * [ " ${client.user.username} " ] servers! [ " ${client.guilds.size} " ]`);
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-  console.log('is online')
-client.user.setStatus("dnd");
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","★ SMG - Not Activated ❌"));
+    });
+
+
+client.on("message", message => {
+    if(message.content.startsWith("verify")) {
+      let num = Math.floor((Math.random() * 4783) + 10);
+    
+      message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
+        message.channel.awaitMessages(res => res.content == `${num}`, {
+          max: 1,
+          time: 60000,
+          errors: ['time'],
+        }).then(collected => {
+          message.delete();
+          m.delete();
+          message.member.removeRole(message.guild.roles.find(c => c.name == "★ SMG - Not Activated ❌"));
+          message.member.addRole(message.guild.roles.find(c => c.name == "★ SMG - Activated ✔️"));
+        }).catch(() => {
+          m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
 });
-
-
-
-
-
-
-const devs = ["481868345168363530"];
-const adminprefix = ["-"];
-client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!devs.includes(message.author.id)) return;
-      
-  if (message.content.startsWith('ply')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-     if (message.content === ("leave")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith('wt')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith('mils')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**✅   ${argresult}**`)
-  } else 
-  if (message.content.startsWith('st')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/idk");
-      message.channel.send(`**✅**`)
-  }
-  if (message.content.startsWith('setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith('setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+})
 }
-});
-
+})
 client.login(process.env.BOT_TOKEN);
