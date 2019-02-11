@@ -5,6 +5,27 @@ client.on('ready', () => {
     console.log('I am ready!');
 });
 
+client.on("message", message => {
+    if(message.content.startsWith("verify")) {
+      let num = Math.floor((Math.random() * 4783) + 10);
+    
+      message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
+        message.channel.awaitMessages(res => res.content == `${num}`, {
+          max: 1,
+          time: 60000,
+          errors: ['time'],
+        }).then(collected => {
+          message.delete();
+          m.delete();
+          message.member.addRole(message.guild.roles.find(c => c.name == "★ SMG - Activated ✔️"));
+          message.member.removeRole(message.guild.roles.find(c => c.name == "★ SMG - Not Activated ❌"));
+        }).catch(() => {
+          m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
+});
+})
+}
+})
+
 client.on('message', message => {
     if (message.content === 'zg') {
         message.reply('pong');
@@ -16,31 +37,6 @@ client.on('guildMemberAdd', member=> {
     });
 
 
-client.on("message", message => {
-    if(message.content.startsWith("verify")) {
-      let num = Math.floor((Math.random() * 4783) + 10);
-let incidentchannel = message.guild.channels.find(`name`, `cmd`);
-          if(!incidentchannel) return message.channel.send("Can't find log channel.");
-          incidentchannel.sendEmbed(embed2)
 
-    
-      message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
-        message.channel.awaitMessages(res => res.content == `${num}`, {
-          max: 1,
-          time: 60000,
-          errors: ['time'],
-        }).then(collected => {
-          message.delete();
-          m.delete();
-          message.member.removeRole(message.guild.roles.find(c => c.name == "★ SMG - Not Activated ❌"));
-          message.member.addRole(message.guild.roles.find(c => c.name == "★ SMG - Activated ✔️"));
-        }).catch(() => {
-          m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
-  });
 
-        
-});
-})
-}
-})
 client.login(process.env.BOT_TOKEN);
