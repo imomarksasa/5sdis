@@ -38,7 +38,7 @@ let incidentchannel = message.guild.channels.find(`name`, `cmd`);
           m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
   });
   }}
-)         
+        
 });
 })
 }
