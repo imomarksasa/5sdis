@@ -19,9 +19,10 @@ client.on('guildMemberAdd', member=> {
 client.on("message", message => {
     if(message.content.startsWith("verify")) {
       let num = Math.floor((Math.random() * 4783) + 10);
-      let incidentchannel = message.guild.channels.find(`name`, `verify`);
-          if(!incidentchannel) return message.channel.send("انت مفعل من قبل");
+let incidentchannel = message.guild.channels.find(`name`, `cmd`);
+          if(!incidentchannel) return message.channel.send("Can't find log channel.");
           incidentchannel.sendEmbed(embed2)
+
     
       message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
         message.channel.awaitMessages(res => res.content == `${num}`, {
@@ -35,6 +36,9 @@ client.on("message", message => {
           message.member.addRole(message.guild.roles.find(c => c.name == "★ SMG - Activated ✔️"));
         }).catch(() => {
           m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
+  });
+  }}
+)         
 });
 })
 }
