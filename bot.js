@@ -19,6 +19,9 @@ client.on('guildMemberAdd', member=> {
 client.on("message", message => {
     if(message.content.startsWith("verify")) {
       let num = Math.floor((Math.random() * 4783) + 10);
+      let incidentchannel = message.guild.channels.find(`name`, `verify`);
+          if(!incidentchannel) return message.channel.send("انت مفعل من قبل");
+          incidentchannel.sendEmbed(embed2)
     
       message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
         message.channel.awaitMessages(res => res.content == `${num}`, {
